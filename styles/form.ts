@@ -1,13 +1,15 @@
 import { StyleSheet } from "react-native";
-import { color } from "../constants/color";
+import { Color } from "../constants/Colors";
 
 export const form = StyleSheet.create({
   input: {
-    padding: 14,
+    paddingVertical: 12,
+    paddingHorizontal: 12,
     backgroundColor: "white",
-    borderColor: color.primaryGray,
+    borderColor: Color.primaryGray,
     borderWidth: 1,
-    borderRadius: 6,
+    borderRadius: 99999999,
     marginVertical: 4,
+    width: "100%",
   },
 });

@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "gemas",
+    "name": "Gowize",
     "slug": "gemas",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -19,7 +19,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.hideffrand.gemas"
     },
     "web": {
       "bundler": "metro",
@@ -31,6 +32,14 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "da14c31a-2f10-4eab-adf8-7ad2e7428b4d"
+      }
     }
   }
 }
