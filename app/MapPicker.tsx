@@ -7,11 +7,6 @@ import LocationSelectorProvider, {
 } from "@/contexts/LocationSelectorProvider";
 import { font } from "@/styles/fonts";
 import BackButton from "@/components/BackButton";
-import { GMAPS_API_KEY } from "@/constants/config";
-import MapViewDirections from "react-native-maps-directions";
-
-const origin = { latitude: 37.78825, longitude: -122.4324 };
-const destination = { latitude: 37.7749, longitude: -122.4194 };
 
 export default function MapPicker() {
   const { selectedLocation, setSelectedLocation } = useLocationSelector();
@@ -33,10 +28,9 @@ export default function MapPicker() {
             coordinate={selectedLocation}
             onDragEnd={(e) => {
               setSelectedLocation(e.nativeEvent.coordinate);
-              alert(JSON.stringify(e.nativeEvent.coordinate));
+              alert(JSON.stringify("Location changed"));
             }}
-            title={"Test Marker"}
-            description={selectedLocation.latitude.toString()}
+            title={"Drag me"}
           />
           {/* <MapViewDirections
             origin={origin}
@@ -47,7 +41,7 @@ export default function MapPicker() {
           /> */}
         </MapView>
       </View>
-      <View
+      {/* <View
         style={{
           position: "absolute",
           bottom: 0,
@@ -64,7 +58,7 @@ export default function MapPicker() {
         <Text style={[font.p]}>Current location</Text>
         <Text>{selectedLocation.latitude}</Text>
         <Text>{selectedLocation.longitude}</Text>
-      </View>
+      </View> */}
     </SafeAreaView>
   );
 }

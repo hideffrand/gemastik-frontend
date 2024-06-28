@@ -16,6 +16,7 @@ interface IPickup {
   trashDetail: string;
   userId: string;
   location: ILocation;
+  locationLabel: string;
   status: string;
   createdAt: Date;
   updatedAt: Date;
@@ -36,6 +37,7 @@ export default function DriverSearch() {
 
   async function handlePressPickup() {
     if (!selectedRequest) return;
+    setSelectedRequest(null);
 
     alert(`Picking up request no ${selectedRequest.id}`);
     const res = await fetch(`${baseUrl}/updatepickup/${selectedRequest.id}`, {
@@ -82,6 +84,7 @@ export default function DriverSearch() {
   }
 
   function handleRefresh() {
+    setSelectedRequest(null);
     fetchPickupData();
   }
 
@@ -134,8 +137,6 @@ export default function DriverSearch() {
             }}
           >
             <View>
-              <Text style={[font.p]}>ID: {selectedRequest.id}</Text>
-              <Text style={[font.p]}>User ID: {selectedRequest.userId}</Text>
               <Text style={[font.h2]}>
                 {selectedRequest.trashDetail}, {selectedRequest.trashType}
               </Text>
@@ -178,7 +179,7 @@ export default function DriverSearch() {
                 latitude: p.location.latitude,
                 longitude: p.location.longitude,
               }}
-              title={p.userId.toString()}
+              title={p.locationLabel?.toString()}
               key={i}
               pinColor={
                 p.id === selectedRequest?.id

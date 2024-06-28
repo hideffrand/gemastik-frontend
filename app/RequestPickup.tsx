@@ -28,6 +28,7 @@ export default function RequestPickup() {
   const [itemCount, setItemCount] = useState<number>(1);
   const [selectedTrashType, setSelectedTrashType] = useState<string>("");
   const [trashDetail, setTrashDetail] = useState<string>("");
+  const [locationLabel, setLocationLabel] = useState<string>("");
   const { user } = useAuth();
 
   async function handleRequestPickup() {
@@ -46,7 +47,7 @@ export default function RequestPickup() {
           location: {
             ...selectedLocation,
           },
-          // locationLabel: "Gunung Sahari 10 no 9 rt 05 rw 07"
+          locationLabel: locationLabel,
         }),
       });
       if (!res.ok) throw Error;
@@ -139,9 +140,13 @@ export default function RequestPickup() {
                 style={{ backgroundColor: "rgb(244,244,244)", padding: 14 }}
               >
                 <Text style={{ marginVertical: 4 }}>Titik jemput:</Text>
-                <Text style={[font.p]}>
-                  Jl. Gunug Sahari 10, No. 8, Kemayoran, Jakarta Pusat, 10651
-                </Text>
+                <TextInput
+                  placeholder="Alamat lengkap"
+                  style={{
+                    padding: 8,
+                  }}
+                  onChangeText={setLocationLabel}
+                />
                 <Link
                   href={"MapPicker"}
                   style={{

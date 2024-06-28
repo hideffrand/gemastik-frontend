@@ -10,7 +10,7 @@ export default function DetailRekomendasi() {
 
   return (
     <>
-      <BackButton />
+      <BackButton to="(tabs)/explore" />
       <Image source={recItem.img} style={{ width: "100%", height: 200 }} />
       <ScrollView style={{ flex: 1 }}>
         <ViewLayout

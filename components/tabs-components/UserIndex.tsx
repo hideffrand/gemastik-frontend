@@ -17,6 +17,7 @@ import { AntDesign } from "@expo/vector-icons";
 import { baseUrl } from "@/constants/config";
 import { Item, ItemType } from "@/app/MyItems";
 import { mockItems } from "@/utils/mock";
+import { router } from "expo-router";
 
 export default function UserIndex() {
   type TimeRange = "Last week" | "Last month" | "Last year";

@@ -17,7 +17,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/gowize-logo.png",
+        "foregroundImage": "./assets/images/gowize-appicon.png",
         "backgroundColor": "#ffffff"
       },
       "package": "com.hideffrand.gemas"
