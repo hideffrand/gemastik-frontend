@@ -11,7 +11,6 @@ import {
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Color } from "../constants/Colors";
 import { font } from "../styles/fonts";
-import { form } from "../styles/form";
 import { Link } from "expo-router";
 import MapView, { Marker } from "react-native-maps";
 import { Picker } from "@react-native-picker/picker";
@@ -32,27 +31,32 @@ export default function RequestPickup() {
   const { user } = useAuth();
 
   async function handleRequestPickup() {
-    const res = await fetch(`${baseUrl}/requestpickup`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "Application/json",
-      },
-      body: JSON.stringify({
-        qty: itemCount,
-        trashType: selectedTrashType,
-        trashDetail: trashDetail,
-        userId: 6,
-        status: "Available",
-        location: {
-          ...selectedLocation,
+    try {
+      const res = await fetch(`${baseUrl}/requestpickup`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "Application/json",
         },
-      }),
-    });
+        body: JSON.stringify({
+          qty: itemCount,
+          trashType: selectedTrashType,
+          trashDetail: trashDetail,
+          userId: user?.id,
+          status: "Available",
+          location: {
+            ...selectedLocation,
+          },
+          // locationLabel: "Gunung Sahari 10 no 9 rt 05 rw 07"
+        }),
+      });
+      if (!res.ok) throw Error;
 
-    if (!res.ok) console.log("Internal Server Error");
-
-    alert("Request Sent!");
-    return;
+      alert("Request Sent!");
+      return;
+    } catch (error) {
+      alert("Failed to Request Pickup");
+      return;
+    }
   }
 
   function handleItemCountMinus() {

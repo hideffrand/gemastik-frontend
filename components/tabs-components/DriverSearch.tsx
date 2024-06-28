@@ -1,13 +1,5 @@
 import Ionicons from "@expo/vector-icons/Ionicons";
-import {
-  Pressable,
-  StyleSheet,
-  Text,
-  View,
-  Button,
-  TouchableOpacity,
-  Alert,
-} from "react-native";
+import { Pressable, Text, View, Alert } from "react-native";
 import MapView, { Marker, Callout } from "react-native-maps";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useEffect, useState } from "react";
@@ -15,7 +7,6 @@ import { Color } from "@/constants/Colors";
 import { font } from "@/styles/fonts";
 import { ILocation } from "@/contexts/LocationSelectorProvider";
 import { baseUrl } from "@/constants/config";
-import { router } from "expo-router";
 import { Feather } from "@expo/vector-icons";
 import * as Location from "expo-location";
 
@@ -32,7 +23,7 @@ interface IPickup {
 
 const UPDATE_STATUS = "Delivering";
 
-export default function Driver() {
+export default function DriverSearch() {
   const [pickupList, setPickupList] = useState<IPickup[] | []>([]);
   const [selectedRequest, setSelectedRequest] = useState<any>(null);
   const [refresh, setRefresh] = useState(false);

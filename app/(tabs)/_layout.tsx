@@ -1,10 +1,8 @@
-import { Tabs, router } from "expo-router";
-import React, { useEffect } from "react";
+import { Tabs } from "expo-router";
+import React from "react";
 import { Color } from "@/constants/Colors";
 import { Feather } from "@expo/vector-icons";
 import { Text } from "react-native";
-import { FontAwesome } from "@expo/vector-icons";
-import { MaterialIcons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 
 export default function TabLayout() {
@@ -15,7 +13,7 @@ export default function TabLayout() {
         headerShown: false,
         tabBarHideOnKeyboard: true, // Keep tabs at bottom when opening keyboard
         tabBarStyle: {
-          paddingVertical: 10, // Add vertical padding
+          paddingVertical: 8, // Add vertical padding
         },
       }}
     >
@@ -24,55 +22,27 @@ export default function TabLayout() {
         options={{
           title: "Home",
           tabBarIcon: ({ color, focused }) => (
-            <AntDesign name="home" size={24} color={color} />
+            <AntDesign name="home" size={28} color={color} />
           ),
-          tabBarLabel: ({ focused }) => (
-            <Text style={{ color: focused ? Color.primaryGreen : "gray" }}>
-              Home
-            </Text>
-          ),
+          tabBarLabel: ({ focused }) =>
+            // <Text style={{ color: focused ? Color.primaryGreen : "gray" }}>
+            //   Home
+            // </Text>
+            null,
         }}
       />
       <Tabs.Screen
-        name="rekomendasikerajinan"
+        name="explore"
         options={{
-          title: "Rekomendasi Kerajinan",
+          title: "Explore",
           tabBarIcon: ({ color, focused }) => (
-            <Feather name="book-open" size={24} color={color} />
+            <Feather name="search" size={28} color={color} />
           ),
-          tabBarLabel: ({ focused }) => (
-            <Text style={{ color: focused ? Color.primaryGreen : "gray" }}>
-              Edu
-            </Text>
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="myitems"
-        options={{
-          title: "My Items",
-          tabBarIcon: ({ color, focused }) => (
-            <MaterialIcons name="menu-open" size={24} color={color} />
-          ),
-          tabBarLabel: ({ focused }) => (
-            <Text style={{ color: focused ? Color.primaryGreen : "gray" }}>
-              My Items
-            </Text>
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="driver"
-        options={{
-          title: "Driver",
-          tabBarIcon: ({ color, focused }) => (
-            <FontAwesome name="drivers-license-o" size={24} color={color} />
-          ),
-          tabBarLabel: ({ focused }) => (
-            <Text style={{ color: focused ? Color.primaryGreen : "gray" }}>
-              Driver
-            </Text>
-          ),
+          tabBarLabel: ({ focused }) =>
+            // <Text style={{ color: focused ? Color.primaryGreen : "gray" }}>
+            //   Explore
+            // </Text>
+            null,
         }}
       />
       <Tabs.Screen
@@ -80,13 +50,13 @@ export default function TabLayout() {
         options={{
           title: "Profile",
           tabBarIcon: ({ color, focused }) => (
-            <Feather name="user" size={24} color={color} />
+            <Feather name="user" size={28} color={color} />
           ),
-          tabBarLabel: ({ focused }) => (
-            <Text style={{ color: focused ? Color.primaryGreen : "gray" }}>
-              Profile
-            </Text>
-          ),
+          tabBarLabel: ({ focused }) =>
+            // <Text style={{ color: focused ? Color.primaryGreen : "gray" }}>
+            //   Profile
+            // </Text>
+            null,
         }}
       />
     </Tabs>

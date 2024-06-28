@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Text, TextInput } from "react-native";
+import { Text, TextInput, View, Image, StyleSheet } from "react-native";
 import Button from "@/components/Button";
 import ViewLayout from "@/components/ViewLayout";
 import { font } from "@/styles/fonts";
@@ -38,29 +38,13 @@ export default function Signup() {
       <Text
         style={[
           font.h1,
-          { marginBottom: 4, textAlign: "center", fontSize: 28 },
+          { marginBottom: 24, textAlign: "center", fontSize: 28 },
         ]}
       >
         Welcome!
       </Text>
-      <Text
-        style={[
-          font.p,
-          { marginBottom: 32, textAlign: "center", opacity: 0.5 },
-        ]}
-      >
-        Welcome back! Ready to save the environment?
-      </Text>
       <TextInput
-        style={[
-          font.p,
-          {
-            padding: 12,
-            borderBottomWidth: 1,
-            borderBottomColor: Color.primaryGray,
-            width: "100%",
-          },
-        ]}
+        style={[font.p, styles.input]}
         placeholder="Name..."
         value={name}
         onChangeText={setName}
@@ -68,10 +52,8 @@ export default function Signup() {
       <TextInput
         style={[
           font.p,
+          styles.input,
           {
-            padding: 12,
-            borderBottomWidth: 1,
-            borderBottomColor: Color.primaryGray,
             width: "100%",
           },
         ]}
@@ -92,11 +74,8 @@ export default function Signup() {
       <TextInput
         style={[
           font.p,
+          styles.input,
           {
-            padding: 12,
-            borderBottomWidth: 1,
-            borderBottomColor: Color.primaryGray,
-            width: "100%",
             marginBottom: 24,
           },
         ]}
@@ -111,14 +90,27 @@ export default function Signup() {
       <Text
         style={[
           font.p,
-          { marginVertical: 24, textAlign: "center", opacity: 0.5 },
+          { marginVertical: 16, textAlign: "center", opacity: 0.5 },
         ]}
       >
         Already have an account?
       </Text>
-      <Button onPress={() => router.replace("Login")} type="secondary">
+      <Button onPress={() => router.replace("Login")} type="ghost">
         Login
       </Button>
     </ViewLayout>
   );
 }
+
+const styles = StyleSheet.create({
+  input: {
+    paddingHorizontal: 8,
+    paddingVertical: 8,
+    marginBottom: 12,
+    borderBottomWidth: 1,
+    borderBottomColor: Color.lightGray,
+    width: "100%",
+    fontSize: 18,
+    fontWeight: "400",
+  },
+});

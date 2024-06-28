@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Text, TextInput, StyleSheet } from "react-native";
+import { Text, TextInput, StyleSheet, Image, View } from "react-native";
 import Button from "@/components/Button";
 import ViewLayout from "@/components/ViewLayout";
 import { font } from "@/styles/fonts";
@@ -27,18 +27,10 @@ export default function Login() {
       <Text
         style={[
           font.h1,
-          { marginBottom: 4, textAlign: "center", fontSize: 28 },
+          { marginBottom: 40, textAlign: "center", fontSize: 28 },
         ]}
       >
         Welcome back!
-      </Text>
-      <Text
-        style={[
-          font.p,
-          { marginBottom: 32, textAlign: "center", opacity: 0.5 },
-        ]}
-      >
-        Ready to save the environment?
       </Text>
       <TextInput
         style={[font.p, styles.input]}
@@ -49,7 +41,7 @@ export default function Login() {
         keyboardType="email-address"
       />
       <TextInput
-        style={[font.p, styles.input]}
+        style={[font.p, styles.input, { marginBottom: 24 }]}
         placeholder="Password..."
         value={password}
         onChangeText={setPassword}
@@ -75,12 +67,12 @@ export default function Login() {
       <Text
         style={[
           font.p,
-          { marginVertical: 24, textAlign: "center", opacity: 0.5 },
+          { marginVertical: 16, textAlign: "center", opacity: 0.6 },
         ]}
       >
         Don't have an account?
       </Text>
-      <Button onPress={() => router.replace("Signup")} type="secondary">
+      <Button onPress={() => router.replace("Signup")} type="ghost">
         Signup
       </Button>
     </ViewLayout>
@@ -89,10 +81,13 @@ export default function Login() {
 
 const styles = StyleSheet.create({
   input: {
-    padding: 12,
+    paddingHorizontal: 8,
+    paddingVertical: 8,
+    marginBottom: 12,
     borderBottomWidth: 1,
-    borderBottomColor: Color.primaryGray,
+    borderBottomColor: Color.lightGray,
     width: "100%",
-    marginBottom: 24,
+    fontSize: 18,
+    fontWeight: "400",
   },
 });

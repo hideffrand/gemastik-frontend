@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import "react-native-reanimated";
 import LocationSelectorProvider from "@/contexts/LocationSelectorProvider";
 import AuthProvider, { useAuth } from "@/contexts/AuthProvider";
+import RekomendasiProvider from "@/contexts/RekomendasiProvider";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -25,23 +26,29 @@ export default function RootLayout() {
     return null;
   }
 
-
   return (
     <AuthProvider>
-      <LocationSelectorProvider>
-        <Stack>
-          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-          <Stack.Screen name="+not-found" />
-          <Stack.Screen name="RequestPickup" options={{ headerShown: false }} />
-          <Stack.Screen name="MapPicker" options={{ headerShown: false }} />
-          <Stack.Screen name="Login" options={{ headerShown: false }} />
-          <Stack.Screen name="Signup" options={{ headerShown: false }} />
-          <Stack.Screen
-            name="AuthOnboarding"
-            options={{ headerShown: false }}
-          />
-        </Stack>
-      </LocationSelectorProvider>
+      <RekomendasiProvider>
+        <LocationSelectorProvider>
+          <Stack>
+            <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+            <Stack.Screen name="+not-found" />
+            <Stack.Screen
+              name="RequestPickup"
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen name="MapPicker" options={{ headerShown: false }} />
+            <Stack.Screen name="Login" options={{ headerShown: false }} />
+            <Stack.Screen name="Signup" options={{ headerShown: false }} />
+            <Stack.Screen name="MyItems" options={{ headerShown: false }} />
+            <Stack.Screen name="DetailRekomendasi" options={{ headerShown: false }} />
+            <Stack.Screen
+              name="AuthOnboarding"
+              options={{ headerShown: false }}
+            />
+          </Stack>
+        </LocationSelectorProvider>
+      </RekomendasiProvider>
     </AuthProvider>
   );
 }

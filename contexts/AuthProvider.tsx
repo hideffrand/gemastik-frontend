@@ -82,7 +82,12 @@ export default function AuthProvider({ children }: { children: ReactNode }) {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ name: name, email: email, password: password }),
+        body: JSON.stringify({
+          name: name,
+          email: email,
+          password: password,
+          role: "user",
+        }),
       });
       if (!res.ok) throw Error;
       const data = await res.json();
@@ -106,7 +111,9 @@ export default function AuthProvider({ children }: { children: ReactNode }) {
     await AsyncStorage.removeItem("userRole");
     setUser(null);
     setUserRole(null);
+    router.replace("AutOnboarding");
     alert("Logout success!");
+    return;
   }
 
   useEffect(() => {
@@ -121,6 +128,7 @@ export default function AuthProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     if (!user || !userRole) {
       router.replace("AuthOnboarding");
+      return;
     }
     router.replace("(tabs)");
   }, [user, userRole]);
